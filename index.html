@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>乡村红色积极心理测评系统</title>
+    <title>云护童心 - 智能心理测评系统</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <div id="app">
+        <!-- 全局返回按钮 -->
+        <button id="global-back-btn" class="global-back-btn" style="display: none;">← 返回</button>
+        
         <!-- 编辑资源包模态框 -->
         <div id="edit-modal" class="modal">
             <div class="modal-content">
@@ -38,6 +44,14 @@
                     <button id="save-resource-btn" class="btn-primary">保存</button>
                     <button id="cancel-edit-btn" class="btn-secondary">取消</button>
                 </div>
+            </div>
+        </div>
+        
+        <!-- 加载提示弹窗 -->
+        <div id="loading-modal" class="modal" style="display: none;">
+            <div class="modal-content loading-content">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">测评正在进行中，请稍候...</p>
             </div>
         </div>
         
@@ -71,7 +85,18 @@
         <!-- 登录注册模块 -->
         <div id="auth-module" class="module active">
             <div class="auth-container">
-                <h1>云护童心—儿童心理健康成长调查</h1>
+                <h1>
+                    <span class="title-line1">云护童心</span>
+                    <span class="title-line2">智能心理测评系统</span>
+                </h1>
+                
+                <!-- 副标题装饰 -->
+                <div class="auth-subtitle">
+                    <span class="subtitle-line"></span>
+                    <span class="subtitle-text">关爱心理健康，守护快乐成长</span>
+                    <span class="subtitle-line"></span>
+                </div>
+                
                 <div class="auth-tabs">
                     <button class="tab-btn active" data-tab="login">登录</button>
                 </div>
@@ -96,6 +121,15 @@
                     </div>
                     <button id="login-btn" class="btn-primary">登录</button>
                     <button id="start-using-btn" class="btn-secondary" style="margin-top: 10px; display: none;">开始使用</button>
+                    
+                    <!-- 底部装饰元素 -->
+                    <div class="auth-footer">
+                        <div class="footer-decoration">
+                            <span class="decoration-dot"></span>
+                            <span class="decoration-text">用心守护每一颗童心</span>
+                            <span class="decoration-dot"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,7 +214,7 @@
                                 <label><input type="checkbox" name="q6" value="hide"> 自己藏在心里不说</label>
                                 <label><input type="checkbox" name="q6" value="hobby"> 做喜欢的事让自己开心点</label>
                                 <label><input type="checkbox" name="q6" value="friend"> 找好朋友吐槽</label>
-                                <label><input type="text" name="q6_other" placeholder="其他"></label>
+                                <label><input type="checkbox" name="q6" value="other"> 其他：<input type="text" name="q6_other" placeholder="请说明"></label>
                             </div>
                         </div>
                         <div class="question">
